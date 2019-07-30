@@ -22,6 +22,7 @@ time_axis = list(at=seq(0, length(mjd[,1])-1, by=714),
 
 period_axis = list(at=2^(1:16), labels=2^(1:16)/1000)
 
+par(mar = c(6.5, 6.5, 0.5, 0.5), mgp = c(5, 1, 0))
 wt.image(my_wt, spec.time.axis=time_axis, spec.period.axis=period_axis,
          periodlab='Fourier Period (ms)', timelab='MJD',
          color.palette='terrain.colors(100)')
