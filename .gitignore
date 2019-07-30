@@ -1,0 +1,7 @@
+#mac stuff
+.DS_Store
+
+#jupyter
+.ipynb_checkpoints/
+__pycache__/
+
