@@ -7,3 +7,4 @@ Summer astronomy research, 10 weeks in National Centre for Radio Astronomy, Indi
   - **J0332_KS_test_sim.ipynb**, which also utilizes **/R_analysis/ks_test.R**
  - **J0332_gaussian_fitting.ipynb**
 
+Still work in progress, goal to apply classification techniques (if feasible with given data) to DWT coefficients of signals.
