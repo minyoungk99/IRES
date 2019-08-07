@@ -6,5 +6,3 @@ Summer astronomy research, 10 weeks in National Centre for Radio Astronomy, Indi
  - **fake_CWT.ipynb** which works on simulated pulse profiles, and **/R_wavelet/wt_spectrum.R** to analyze J0332 data. Resulting continuous wavelet transform (CWT) power spectrum plots are in **/power_spectrum**
   - **J0332_KS_test_sim.ipynb**, which also utilizes **/R_analysis/ks_test.R**
  - **J0332_gaussian_fitting.ipynb**
-
-Still work in progress, goal to apply classification techniques (if feasible with given data) to DWT coefficients of signals.
