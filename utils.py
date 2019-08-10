@@ -233,7 +233,7 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
                 ymax = np.max(n)
                 ax.axvspan(xmin=mu+(2*sd), xmax=bins[-1], color='r',alpha=.1)
                 ax.axvspan(xmin=bins[0], xmax=mu-(2*sd), color='r',alpha=.1, label="2-sigma")
-            ax.legend()
+                ax.legend()
         else:
             ax.plot(val)
             if mjd is not None:
