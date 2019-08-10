@@ -9,6 +9,7 @@ from scipy.fftpack import fft, ifft
 import utils as u
 import fake_profile as fp
 from astropy.modeling import models, fitting
+import pywt
 
 def noise_stats_out(profile,N, err=0.5):  
         '''This algorithm only works for ratio
@@ -242,3 +243,41 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
                 ax.set_title(i)
     fig.tight_layout() #makes it look somewhat better
     plt.show()
+    
+def dwt_denoise(profile, d_ignore=[-1], wavelet_name='sym20', mode='zero', max_level=None)
+    '''This function utilizes pywt's discrete wavelet transform 
+    to denoise a given 1D array signal by discarding the smallest
+    scale DWT coefficients in wavelet domain and returning reconstructed
+    signal through inverse DWT.
+    
+    Parameters
+    ----------
+    profile : 1D array
+    1D array signal to apply DWT on. Theoretically, the pywt functions used
+    can be applied to nD arrays.
+    
+    d_ignore : list
+    List of indices indicating which detail coefficients to ignore.
+    -1 corresponds to smallest scale coeffients.
+    
+    wavelet_name : string
+    pywt wavelet name. Check with pywt.wavelist(kind='discrete')
+    
+    mode : string
+    DWT signal extension modes. Check with pywt.Mode.modes
+    
+    max_level : int
+    Maximum level to decompose signal to using DWT.
+    '''
+    
+    if max_level is None:
+        max_level = pywt.dwt_max_level(len(calib[36]), wavelet)
+    wavelet_name = wavelet_name
+    wavelet = pywt.Wavelet(wavelet_name)
+    coeff = pywt.wavedecn(profile, wavelet, mode=mode, level=max_level)
+    
+    for i in d_ignore:
+        coeff[i] = {k: np.zeros_like(v) for k, v in coeff[i].items()}
+        
+    return pywt.waverecn(coeff, wavelet, mode='zero')
+    
