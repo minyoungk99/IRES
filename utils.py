@@ -179,7 +179,7 @@ def phase_shift(prof_arr, basis=0, N=714, P=.714):
             data[i].profile = np.abs(iyf)
     return data
 
-def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=False):
+def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=False, mjd=None):
     '''Plot grid of histograms/plots
     
     Parameters
@@ -203,6 +203,9 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
     nbins : int, optional
     Number of bins in histogram
     
+    mjd : n-D array, optional
+    Array of corresponding MJDs to use as lineplot titles
+    
     x : 1D array, optional
     If hist=False, provide optional 
     '''
@@ -220,7 +223,10 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
         ax = fig.add_subplot(nrows, ncols, i+1)
         if hist:
             n,bins,patches = ax.hist(val, bins=nbins)
-            ax.set_title(i)
+            if mjd is not None:
+                ax.set_title(str(mjd[i]))
+            else:
+                ax.set_title(i)
             if confid_int:
                 sd = np.std(val)
                 mu = np.mean(val)
@@ -230,6 +236,9 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
             ax.legend()
         else:
             ax.plot(val)
-            ax.set_title(i)
+            if mjd is not None:
+                ax.set_title(str(mjd[i]))
+            else:
+                ax.set_title(i)
     fig.tight_layout() #makes it look somewhat better
     plt.show()
