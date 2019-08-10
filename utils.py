@@ -244,7 +244,7 @@ def gridplot(data, ncols, figsize=(15,70), hist=True, nbins=100, confid_int=Fals
     fig.tight_layout() #makes it look somewhat better
     plt.show()
     
-def dwt_denoise(profile, d_ignore=[-1], wavelet_name='sym20', mode='zero', max_level=None)
+def dwt_denoise(profile, d_ignore=[-1], wavelet_name='sym20', mode='zero', max_level=None):
     '''This function utilizes pywt's discrete wavelet transform 
     to denoise a given 1D array signal by discarding the smallest
     scale DWT coefficients in wavelet domain and returning reconstructed
@@ -270,10 +270,10 @@ def dwt_denoise(profile, d_ignore=[-1], wavelet_name='sym20', mode='zero', max_l
     Maximum level to decompose signal to using DWT.
     '''
     
-    if max_level is None:
-        max_level = pywt.dwt_max_level(len(calib[36]), wavelet)
     wavelet_name = wavelet_name
     wavelet = pywt.Wavelet(wavelet_name)
+    if max_level is None:
+        max_level = pywt.dwt_max_level(len(profile), wavelet)
     coeff = pywt.wavedecn(profile, wavelet, mode=mode, level=max_level)
     
     for i in d_ignore:
