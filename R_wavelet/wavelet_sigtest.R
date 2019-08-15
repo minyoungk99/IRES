@@ -16,7 +16,7 @@ nbins <- dim(ratios)[2]
 pw_sig <- .99
 cum_sig <- .99
 
-pdf("../plots/power_spectra.pdf", width=5, height=3) 
+pdf("../plots/ratio_power_spectra.pdf", width=5, height=3) 
 for (i in 1:nprofs) {
   par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1) #make space for colorbar
   data <- cbind(1:nbins, sapply(ratios[i,], FUN=as.numeric))
