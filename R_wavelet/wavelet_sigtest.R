@@ -1,7 +1,7 @@
 #Perform wavelet significance test on profile ratios
 setwd("/Users/MYK/Desktop/IRES/R_wavelet")
-packages <- c('biwavelet', 'pracma', 'fields')
-sapply(packages, FUN=library, character.only=TRUE)
+packages <- c('biwavelet', 'pracma', 'fields') #'fields' required for plotting colorbar
+lapply(packages, FUN=library, character.only=TRUE)
 source('adv_biwavelet_packages.R')
 
 mjd <- read.table('../J0332_MJD.txt')
