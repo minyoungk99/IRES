@@ -7,4 +7,4 @@ Summer astronomy research, 10 weeks in National Centre for Radio Astronomy, Indi
   - **J0332_KS_test_sim.ipynb**, which also utilizes **/R_analysis/ks_test.R**
  - **J0332_gaussian_fitting.ipynb**
 
-4th notebook **test_comparison.ipynb** to compare mode change classifications from different tests
+4th notebook **test_comparison.ipynb** to compare mode change classifications from different tests. Resulting plot is **/plots/test_comp.jpeg**
