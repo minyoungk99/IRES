@@ -271,7 +271,9 @@ generate_red <- function(d1,N,lag1) {
  ntseq <- seq_len(ntimesteps)
 
  # Generate time series
- d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps))
+ #d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps)
+ #EDITED HERE BY MINYOUNG to compare against ratio or diffs profile
+ d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps)-ar1_ma0_sim(mr1, lag1[1], ntimesteps))
  return(d1)
 
 }# end of function
