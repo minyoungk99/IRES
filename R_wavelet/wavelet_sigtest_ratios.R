@@ -27,7 +27,7 @@ for (i in 1:nprofs) {
   par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1) #make space for colorbar
   data <- cbind(1:nbins, sapply(ratios[i,], FUN=as.numeric))
   wt <- wt_area(data, lag1=.0000000001, sig.level = pw_sig, csig.level=cum_sig)
-  plot.biwavelet_adv(wt,  plot.cb=TRUE, ncol=64, fill.cols=cmap,
+  plot.biwavelet_adv(wt,  plot.cb=TRUE, ncol=64, fill.cols=cmap, lwd.sig=1,
                      main=bquote("MJD:" ~ .(mjd[i])*","~alpha[pw]*":"~.(pw_sig)*","~
                                    alpha[cum]*":"~.(cum_sig)))
 }
