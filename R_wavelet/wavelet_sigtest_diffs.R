@@ -15,10 +15,10 @@ diffs <- read.table('J0332_diffs.txt')
 
 nprofs <- dim(ratios)[1]
 nbins <- dim(ratios)[2]
-pw_sig <- .99
-cum_sig <- .99
+pw_sig <- .95
+cum_sig <- .95
 
-pdf("../plots/diffs_power_spectra.pdf", width=5, height=3) 
+pdf("../plots/diffs_95_95.pdf", width=5, height=3) 
 cmap = cm.colors(64)
 for (i in 1:nprofs) {
   par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1) #make space for colorbar
