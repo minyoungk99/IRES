@@ -1,7 +1,7 @@
 # IRES
 Summer astronomy research, 10 weeks in National Centre for Radio Astronomy, India. Detecting pulsar mode changes.
 
-[Final Report](IRES_report.pdf)
+[Final Project Report PDF](IRES_report.pdf)
 
 3 main notebooks for detecting mode changes employ gaussian fitting, Kolmogorov-Smirnov (KS) test, and discrete/continuous wavelet transform (DWT/CWT).
 
