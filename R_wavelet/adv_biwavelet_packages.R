@@ -840,6 +840,8 @@ plot.biwavelet_adv <- function(x, ncol = 64, fill.cols = NULL,
   # sig.level contour
   if (plot.sig & length(x$signif) > 1) {
     if (x$type %in% c("wt", "xwt")) {
+      #EDITED BY MINYOUNG added options
+      options("max.contour.segments"= 300000)
       contour(x$t, yvals, t(x$signif), level = tol, col = col.sig,
               lwd = lwd.sig, add = TRUE, drawlabels = FALSE)
     } else {
