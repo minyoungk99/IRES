@@ -273,7 +273,8 @@ generate_red <- function(d1,N,lag1) {
  # Generate time series
  #d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps)
  #EDITED HERE BY MINYOUNG to compare against ratio or diffs profile
- d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps)-ar1_ma0_sim(mr1, lag1[1], ntimesteps))
+ d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps) -
+             ar1_ma0_sim(mr1, lag1[1], ntimesteps))
  return(d1)
 
 }# end of function
@@ -841,7 +842,7 @@ plot.biwavelet_adv <- function(x, ncol = 64, fill.cols = NULL,
   if (plot.sig & length(x$signif) > 1) {
     if (x$type %in% c("wt", "xwt")) {
       #EDITED BY MINYOUNG added options
-      options("max.contour.segments"= 300000)
+      #options("max.contour.segments"= 300000)
       contour(x$t, yvals, t(x$signif), level = tol, col = col.sig,
               lwd = lwd.sig, add = TRUE, drawlabels = FALSE)
     } else {
