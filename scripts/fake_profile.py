@@ -4,6 +4,26 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class fake_profile():
+    '''Function to create a fake profile.
+    
+    Parameters
+    ----------
+    
+    amp_arr : array_like
+    Array or list of amplitudes for each gaussian component of a profile.
+    
+    mean_arr : array_like
+    Array or list of means for each gaussian component of a profile.
+    
+    sd_arr : array_like
+    Array or list of standard deviations for each gaussian component of a profile.
+    
+    period : float, optional
+    Period of profile.
+    
+    nbins : int, optional
+    Number of bins/samples in the profile.
+    '''
     def __init__(self,amp_arr,mean_arr, sd_arr,period=100,nbins=512):
         self.amp = amp_arr
         self.mean_arr = mean_arr
@@ -18,6 +38,16 @@ class fake_profile():
         return (2*np.pi*sd**2)**(-1/2) * np.exp(-(domain-mu)**2 / (2*sd**2))
 
     def construct_profile(self,noise=False,wn_sigma=.03):
+        '''Construct profile after initializing.
+        
+        Parameters
+        ----------
+        noise : bool, optional
+        Set to True to add white noise to profile.
+        
+        wn_sigma : floab, optional
+        Standard deviation of Gaussian white noise to be added.
+        '''
         profile = np.zeros(self.nbins)
         for ind,m in enumerate(self.mean_arr):
             profile += self.amp[ind]*self.gaussian_pdf(self.domain, m, self.sd_arr[ind])
@@ -29,6 +59,7 @@ class fake_profile():
         self.profile = profile#/profile.sum()#normalize
     
     def derivative(self):
+        '''Takes derivative of profile and saves in attribute d_profile.'''
         if len(self.profile) > 0:
             d_profile = []
             for i in range(len(self.profile)-1):
