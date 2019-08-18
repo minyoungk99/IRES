@@ -16,20 +16,19 @@ ratios <- read.table('J0332_ratios.txt')
 #ar1_ma0_sim(mr1, lag1[1], ntimesteps)/ar1_ma0_sim(mr1, lag1[1], ntimesteps))
 #in last line of generate_red()
 
-nprofs <- dim(ratios)[1]
+nprofs <- 1#dim(ratios)[1]
 nbins <- dim(ratios)[2]
-pw_sig <- .99
 cum_sig <- .99
 
-pdf("../plots/ratio_power_spectra.pdf", width=5, height=3) 
+#pdf("../plots/ratio_99_sd.pdf", width=5, height=3) 
 cmap = cm.colors(64)
 for (i in 1:nprofs) {
   par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1) #make space for colorbar
   data <- cbind(1:nbins, sapply(ratios[i,], FUN=as.numeric))
-  wt <- wt_area(data, lag1=.0000000001, sig.level = pw_sig, csig.level=cum_sig)
+  wt <- wt_area(data, lag1=.0000000001,  csig.level=cum_sig, 
+                psig.level = c(0.82,.84,0.86,.88,0.90,.92,0.94,.96,0.98))
   plot.biwavelet_adv(wt,  plot.cb=TRUE, ncol=64, fill.cols=cmap, lwd.sig=1,
-                     main=bquote("MJD:" ~ .(mjd[i])*","~alpha[pw]*":"~.(pw_sig)*","~
-                                   alpha[cum]*":"~.(cum_sig)))
+                     main=bquote("MJD:" ~ .(mjd[i])*","~ alpha[cum]*":"~.(1-cum_sig)))
 }
-dev.off()
+#dev.off()
 

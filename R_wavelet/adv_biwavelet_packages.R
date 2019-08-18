@@ -252,7 +252,8 @@ generate_red <- function(d1,N,lag1) {
       }
 
      nstart <- 2 + ceiling(6 / log(minroots))
-
+     # EDITED BY MINYOUNG, ADDED sd TO rnorm
+     #x <- ts(data = rnorm(n + nstart), start = 1 - nstart)
      x <- ts(data = rnorm(n + nstart), start = 1 - nstart)
      x <- filter(x, ar, method = "recursive")
      x[-seq_len(nstart)]
@@ -270,11 +271,12 @@ generate_red <- function(d1,N,lag1) {
  mr1 <- get_minroots(lag1[1])
  ntseq <- seq_len(ntimesteps)
 
- # Generate time series
+ # Generate time series, original
  #d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps)
  #EDITED HERE BY MINYOUNG to compare against ratio or diffs profile
+ 
  d1 <- cbind(ntseq, ar1_ma0_sim(mr1, lag1[1], ntimesteps) -
-             ar1_ma0_sim(mr1, lag1[1], ntimesteps))
+              ar1_ma0_sim(mr1, lag1[1], ntimesteps))
  return(d1)
 
 }# end of function
