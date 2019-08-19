@@ -5,10 +5,15 @@ lapply(packages, FUN=library, character.only=TRUE)
 source('adv_biwavelet_packages.R')
 
 #data <- rnorm(2000, sd=.5) + rep(c(rep(0, 99),10), 20)
-data <- read.table('gaussian.txt')
-
-wt_obj <- wt(cbind(1:714,as.numeric(data[,1])), lag1=.00000001)
+data <- read.table('fake_diffs.txt')
 
 par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
 cmap = cm.colors(100)
-plot.biwavelet_adv(wt_obj, plot.cb=TRUE, ncol=100, fill.cols=cmap, lwd.sig=1,)
+
+pdf('../plots/fake_diffs.pdf', width=5, height=3)
+for (i in 1:dim(data)[1]) {
+  par(oma = c(0, 0, 0, 1), mar = c(5, 4, 4, 5) + 0.1)
+  wt_obj <- wt(cbind(1:512,as.numeric(data[i,])), lag1=.00000001)
+  plot.biwavelet_adv(wt_obj, plot.cb=TRUE, ncol=100, fill.cols=cmap, lwd.sig=1)
+}
+dev.off()
