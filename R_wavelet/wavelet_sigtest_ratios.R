@@ -4,9 +4,9 @@ packages <- c('biwavelet', 'pracma', 'fields', 'RColorBrewer') #'fields' require
 lapply(packages, FUN=library, character.only=TRUE)
 source('adv_biwavelet_packages.R')
 
-mjd <- read.table('../J0332_MJD.txt')
+mjd <- read.table('../data/J0332_MJD.txt')
 mjd <- mjd[-1,1] #drop first MJD
-profs <- read.table('../J0332_profs.txt')
+profs <- read.table('../data/J0332_profs.txt')
 ratios <- read.table('J0332_ratios.txt')
 #combine these two into 714x2 matrix required format for wt.sig
 #convert each observation of a variable to numeric by sapply(ratios[1,], MARGIN=1,FUN=as.numeric)

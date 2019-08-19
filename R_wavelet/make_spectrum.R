@@ -4,7 +4,7 @@ library('WaveletComp')
 #real data, 34minute runtime
 #timeser <- read.table('J0332_timeser.txt')
 #timeser <- timeser[1:714,1]
-morlet <- sapply(read.table('../morlet.txt')[,1], FUN=as.numeric)
+morlet <- sapply(read.table('../data/morlet.txt')[,1], FUN=as.numeric)
 
 #create dataframe, label columns, specifically 'date' for analyze.wavelet function
 df <- data.frame(seq(1, length(morlet)), morlet)
