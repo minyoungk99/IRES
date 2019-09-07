@@ -1,3 +1,5 @@
+Currently working on using machine learning classifiers (both supervised and unsupervised). Works on fake profile data.
+
 # IRES
 Summer astronomy research, 10 weeks in National Centre for Radio Astronomy, India. Detecting pulsar mode changes.
 
