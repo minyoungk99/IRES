@@ -2,6 +2,8 @@ Main files:
 
 J0332_KS_test_sim.ipynb
 
+J0332_gaussian_fitting.ipynb
+
 R_wavelet folder
 
 test_comparison.ipynb
