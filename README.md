@@ -4,7 +4,7 @@ J0332_KS_test_sim.ipynb
 
 J0332_gaussian_fitting.ipynb
 
-R_wavelet/wavelet_sigtest_rations.R
+R_wavelet/wavelet_sigtest_ratios.R
 
 test_comparison.ipynb
 
